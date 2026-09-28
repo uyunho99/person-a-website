@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Person A — We See People Beyond Data.</title>
+<meta name="description" content="Person A reads the context behind customer behavior, finds the unmet needs customers never put into words, and turns persona clusters into the next best experience.">
+<meta property="og:title" content="Person A — We See People Beyond Data.">
+<meta property="og:description" content="Right Person · Right Moment · Right Experience · Right Action">
+<meta property="og:image" content="assets/demo-poster.jpg">
+<link rel="preload" href="assets/fonts/Pretendard-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+
+@font-face{font-family:Pretendard;font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/Pretendard-Regular.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/Pretendard-Medium.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/Pretendard-SemiBold.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:700;font-style:normal;font-display:swap;src:url(assets/fonts/Pretendard-Bold.woff2) format("woff2")}
+body{margin:0;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",system-ui,sans-serif;background:#f6f7f9;color:#1c1e22}
+a{color:#0a73b5}a:hover{color:#085d93}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #0a73b5;outline-offset:2px}
+a,button{transition:background-color 150ms ease-out,color 150ms ease-out,border-color 150ms ease-out,box-shadow 150ms ease-out,transform 150ms ease-out}
+a[style*="background: #0a73b5"]:hover,button[style*="background: #0a73b5"]:hover{background:#085d93 !important}
+a[style*="background: #ffffff"]:hover{background:#e8f4fc !important}
+@keyframes pa-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pa-fade{from{opacity:0}to{opacity:1}}
+@keyframes pa-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes pa-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes pa-ring{0%{box-shadow:0 0 0 0 rgba(55,183,248,.55)}100%{box-shadow:0 0 0 14px rgba(55,183,248,0)}}
+.pa-rise{animation:pa-up 700ms cubic-bezier(.2,.7,.2,1) both}
+.pa-d1{animation-delay:120ms}.pa-d2{animation-delay:240ms}.pa-d3{animation-delay:360ms}
+.pa-s1{animation:pa-up 600ms ease-out 700ms both}.pa-s2{animation:pa-up 600ms ease-out 1300ms both}.pa-s3{animation:pa-up 600ms ease-out 1900ms both}
+.pa-need{animation:pa-ring 1400ms ease-out 2600ms 2}
+.pa-hull{animation:pa-fade 900ms ease-out 200ms both}
+.pa-cl{transform-box:fill-box;transform-origin:center;animation:pa-pop 800ms cubic-bezier(.2,.7,.2,1) both}
+.pa-c1{animation-delay:300ms}.pa-c2{animation-delay:450ms}.pa-c3{animation-delay:600ms}.pa-c4{animation-delay:750ms}
+.pa-draw{stroke-dasharray:1;stroke-dashoffset:0;animation:pa-draw 1400ms ease-out 400ms both}
+.pa-band{animation:pa-fade 800ms ease-out 1200ms both}
+.pa-card{transition:box-shadow 150ms ease-out,transform 150ms ease-out}
+.pa-card:hover{box-shadow:0 1px 2px rgba(28,30,34,.06),0 8px 24px rgba(28,30,34,.08);transform:translateY(-2px)}
+@supports (animation-timeline: view()){.pa-view{animation:pa-up linear both;animation-timeline:view();animation-range:entry 0% entry 45%}}
+@keyframes pa-flip{from{opacity:0;transform:perspective(1200px) rotateY(-70deg)}to{opacity:1;transform:none}}
+.pa-in{animation:pa-up 420ms ease-out both}
+.pa-flip{transform-origin:center;animation:pa-flip 520ms cubic-bezier(.2,.7,.2,1) both}
+.pa-late{animation:pa-up 420ms ease-out 450ms both}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+
+
+:root{--gutter:max(24px, calc((100vw - 1200px) / 2))}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+img,video{max-width:100%}
+.logo-fallback{font-weight:700;font-size:20px;color:#1c1e22}
+.pa-clbtn{position:absolute;left:6.45%;top:11%;width:34.9%;height:36.5%;padding:0;border-radius:999px;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;font-family:inherit;background:transparent;border:1px dashed #7f838b}
+.pa-clbtn[aria-pressed="true"]{background:rgba(55,183,248,.18);border:2px solid #0a73b5}
+.pa-clpill{transform:translateY(14px);padding:2px 8px;border-radius:999px;white-space:nowrap;font-size:12px;line-height:16px;font-weight:600;background:#1c1e22;color:#fff}
+.pa-clbtn[aria-pressed="true"] .pa-clpill{background:#0a73b5}
+.pa-tab{height:36px;padding:0 14px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;background:transparent;color:#55585f;border:1px solid transparent}
+.pa-tab[aria-selected="true"]{background:#fff;color:#0a73b5;border-color:#0a73b5;font-weight:600}
+button:focus-visible{outline:2px solid #0a73b5;outline-offset:2px}
+#outputs-grid{grid-template-columns:276px 276px 408px 192px}
+@media (max-width: 1240px){#outputs-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width: 1024px){
+.r-stack{flex-direction:column !important;align-items:stretch !important}
+.r-full{width:100% !important;max-width:100% !important}
+.r-svg{width:100% !important;height:auto !important}
+#top > div{width:100% !important}
+}
+@media (max-width: 760px){
+.r-nav{display:none !important}
+.r-grid1{grid-template-columns:minmax(0,1fr) !important}
+.r-grid1 > div{border-left:0 !important}
+#outputs-grid{grid-template-columns:minmax(0,1fr) !important}
+h1{font-size:40px !important;line-height:48px !important}
+h2{font-size:28px !important;line-height:36px !important}
+.r-big{font-size:24px !important;line-height:32px !important}
+section{padding-top:64px !important;padding-bottom:64px !important}
+}
+
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column; background: #f6f7f9; color: #1c1e22; font-family: Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif; overflow-x: hidden">
+
+<header style="height: 72px; flex-shrink: 0; background: #ffffff; border-bottom: 1px solid #e1e4e8; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--gutter); box-sizing: border-box">
+<a href="#top" aria-label="Person A home" style="display: flex; align-items: center; height: 48px"><img src="assets/person-a-logo.png" alt="Person A" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Person A',className:'logo-fallback'}))" style="height: 44px; width: auto; display: block"></a>
+<nav class="r-nav" aria-label="Main" style="display: flex; gap: 32px; font-size: 14px; line-height: 20px; font-weight: 500">
+<a href="#how" style="color: #1c1e22; text-decoration: none">How we work</a>
+<a href="#why" style="color: #1c1e22; text-decoration: none">Why Person A</a>
+<a href="#clusters" style="color: #1c1e22; text-decoration: none">Persona clusters</a>
+<a href="#outputs" style="color: #1c1e22; text-decoration: none">What you get</a>
+<a href="#try" style="color: #1c1e22; text-decoration: none">Try the demo</a>
+<a href="#inquiry" style="color: #1c1e22; text-decoration: none">Contact</a>
+</nav>
+</header>
+
+<section id="top" class="r-stack" style="flex-shrink: 0; background: #37b7f8; padding: 96px var(--gutter); box-sizing: border-box; display: flex; gap: 64px; align-items: center">
+<div class="r-full" style="width: 560px; flex-shrink: 0; display: flex; flex-direction: column; gap: 24px">
+<h1 class="pa-rise" style="margin: 0; font-size: 60px; line-height: 68px; font-weight: 700; letter-spacing: -0.02em; color: #1c1e22">We See People<br>Beyond Data.</h1>
+<p class="pa-rise pa-d1" style="margin: 0; font-size: 20px; line-height: 30px; color: #1c1e22">Data tells you what customers did. Person A reads the context behind it and finds the needs they never put into words.</p>
+<div class="pa-rise pa-d2" style="display: flex; gap: 12px; padding-top: 8px">
+<a href="#inquiry" style="display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 6px; background: #0a73b5; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box">Contact us<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+<a href="#why" style="display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 6px; background: #ffffff; color: #1c1e22; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box">See how we’re different</a>
+</div>
+</div>
+
+<div class="pa-rise pa-d3" style="flex-grow: 1; display: flex">
+<video controls playsinline preload="metadata" poster="assets/demo-poster.jpg" src="assets/demo.mp4" aria-label="Person A product walkthrough" style="width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 10px; border: 1px solid #e1e4e8; background: #1c1e22; object-fit: cover"></video>
+</div>
+</section>
+
+<section id="how" style="flex-shrink: 0; padding: 112px var(--gutter); box-sizing: border-box; background: #ffffff; border-bottom: 1px solid #e1e4e8; display: flex; flex-direction: column; gap: 64px">
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 1000px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 600; color: #0a73b5">How we work</div>
+<h2 class="pa-view" style="margin: 0; font-size: 40px; line-height: 52px; font-weight: 700; letter-spacing: -0.02em">We uncover unspoken needs, understand hidden pain points, and design experiences that truly matter.</h2>
+</div>
+<div class="r-grid1" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
+<div class="pa-view" style="border-top: 2px solid #37b7f8; padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 500; color: #55585f">01</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700">Read the context</h3>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #55585f">Behavior only makes sense in context — when, where, under what pressure, and instead of what. We read the situation, not just the click.</p>
+</div>
+<div class="pa-view" style="border-top: 2px solid #37b7f8; padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 500; color: #55585f">02</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700">Find the unmet needs</h3>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #55585f">The most valuable needs are the ones customers never say. We find them in the gap between what people do and what they are offered.</p>
+</div>
+<div class="pa-view" style="border-top: 2px solid #37b7f8; padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 500; color: #55585f">03</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700">Design what matters</h3>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #55585f">Every insight ends in a direction for the experience — what to build, change or stop — not a profile to file away.</p>
+</div>
+</div>
+</section>
+
+<section id="why" style="flex-shrink: 0; padding: 96px var(--gutter); box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 600; color: #0a73b5">Why Person A</div>
+<h2 class="pa-view" style="margin: 0; font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.02em">Not another persona generator.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #55585f">Most persona tools describe customers. We explain them.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e1e4e8; border-radius: 10px; overflow: hidden">
+<div class="r-grid1" style="display: grid; grid-template-columns: 1fr 1fr; background: #eceef1; font-size: 13px; line-height: 18px; font-weight: 500; color: #55585f">
+<div style="padding: 14px 32px">Typical persona tools</div>
+<div style="padding: 14px 32px; border-left: 1px solid #e1e4e8; color: #1c1e22; font-weight: 600">Person A</div>
+</div>
+<div class="pa-view r-grid1" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e1e4e8; font-size: 16px; line-height: 24px">
+<div style="padding: 24px 32px; color: #55585f">Describe who customers are — age, job, income</div>
+<div style="padding: 24px 32px; border-left: 1px solid #e1e4e8; background: #e4f5fe; display: flex; gap: 12px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a73b5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><b style="font-weight: 600">Understand what they’re going through</b> — context, state, intent and uncertainty</span></div>
+</div>
+<div class="pa-view r-grid1" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e1e4e8; font-size: 16px; line-height: 24px">
+<div style="padding: 24px 32px; color: #55585f">Summarize what customers say they want</div>
+<div style="padding: 24px 32px; border-left: 1px solid #e1e4e8; background: #e4f5fe; display: flex; gap: 12px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a73b5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><b style="font-weight: 600">Reveal what they actually need</b> — including unmet needs they never explicitly express</span></div>
+</div>
+<div class="pa-view r-grid1" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e1e4e8; font-size: 16px; line-height: 24px">
+<div style="padding: 24px 32px; color: #55585f">Invent a fictional person — with a name, face and fixed profile</div>
+<div style="padding: 24px 32px; border-left: 1px solid #e1e4e8; background: #e4f5fe; display: flex; gap: 12px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a73b5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><b style="font-weight: 600">Discover real persona patterns</b> — groups grounded in shared context, state and need</span></div>
+</div>
+<div class="pa-view r-grid1" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e1e4e8; font-size: 16px; line-height: 24px">
+<div style="padding: 24px 32px; color: #55585f">Treat personas as static types</div>
+<div style="padding: 24px 32px; border-left: 1px solid #e1e4e8; background: #e4f5fe; display: flex; gap: 12px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a73b5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><b style="font-weight: 600">Understand how personas shift</b> — as their context, state and intent change</span></div>
+</div>
+<div class="pa-view r-grid1" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e1e4e8; font-size: 16px; line-height: 24px">
+<div style="padding: 24px 32px; color: #55585f">End with a profile document</div>
+<div style="padding: 24px 32px; border-left: 1px solid #e1e4e8; background: #e4f5fe; display: flex; gap: 12px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a73b5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><b style="font-weight: 600">Decide the next best experience</b> — what to offer, say or do differently in each moment</span></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 48px 32px; border-radius: 10px; background: #1c1e22; color: #ffffff">
+<div style="font-size: 13px; line-height: 18px; font-weight: 500; color: #e4f5fe">What Person A delivers</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.02em" class="r-big"><span class="pa-view">Right Person</span><span aria-hidden="true" style="color: #37b7f8; font-weight: 700">·</span><span class="pa-view">Right Moment</span><span aria-hidden="true" style="color: #37b7f8; font-weight: 700">·</span><span class="pa-view">Right Experience</span><span aria-hidden="true" style="color: #37b7f8; font-weight: 700">·</span><span class="pa-view">Right Action</span></div>
+</div>
+</section>
+
+<section id="clusters" style="flex-shrink: 0; padding: 96px var(--gutter); box-sizing: border-box; background: #ffffff; border-top: 1px solid #e1e4e8; border-bottom: 1px solid #e1e4e8; display: flex; flex-direction: column; gap: 48px">
+<div class="r-stack" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 600; color: #0a73b5">Persona clusters</div>
+<h2 class="pa-view" style="margin: 0; font-size: 32px; line-height: 40px; font-weight: 700; letter-spacing: -0.02em">A persona is a shared context, not a made-up person</h2>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #55585f">We group customers by the situations they are in and the needs those situations create. Each cluster is a persona your team can design for.</p>
+</div>
+</div>
+<div class="r-stack" style="display: flex; gap: 32px; align-items: stretch">
+<div class="r-full" style="width: 560px; flex-shrink: 0; border: 1px solid #e1e4e8; border-radius: 10px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 16px; line-height: 24px; font-weight: 600">Cluster map</div>
+<svg width="510" height="360" viewBox="0 0 552 390" class="r-svg" role="img" aria-label="Customers grouped into four persona clusters" style="display: block">
+<ellipse class="pa-hull" cx="132" cy="115" rx="80" ry="58" fill="none" stroke="#1c1e22" stroke-opacity="0.3" stroke-dasharray="4 4"></ellipse>
+<ellipse class="pa-hull" cx="415" cy="107" rx="74" ry="54" fill="none" stroke="#1c1e22" stroke-opacity="0.3" stroke-dasharray="4 4"></ellipse>
+<ellipse class="pa-hull" cx="150" cy="275" rx="68" ry="52" fill="none" stroke="#1c1e22" stroke-opacity="0.3" stroke-dasharray="4 4"></ellipse>
+<ellipse class="pa-hull" cx="422" cy="278" rx="72" ry="56" fill="none" stroke="#1c1e22" stroke-opacity="0.3" stroke-dasharray="4 4"></ellipse>
+<g fill="#e1e4e8"><circle cx="272" cy="190" r="4"></circle><circle cx="250" cy="150" r="4"></circle><circle cx="300" cy="222" r="4"></circle><circle cx="282" cy="72" r="4"></circle><circle cx="262" cy="320" r="4"></circle><circle cx="318" cy="160" r="4"></circle></g>
+<g class="pa-cl pa-c1" fill="#1c1e22"><circle cx="100" cy="100" r="5"></circle><circle cx="118" cy="80" r="5"></circle><circle cx="160" cy="110" r="5"></circle><circle cx="125" cy="122" r="5"></circle><circle cx="150" cy="138" r="5"></circle><circle cx="105" cy="130" r="5"></circle><circle cx="135" cy="150" r="5"></circle><circle cx="172" cy="90" r="5"></circle><circle cx="88" cy="116" r="5"></circle><circle cx="115" cy="105" r="5"></circle><circle cx="155" cy="123" r="5"></circle><circle cx="140" cy="92" r="5"></circle></g>
+<g class="pa-cl pa-c2" fill="#37b7f8"><circle cx="380" cy="90" r="5"></circle><circle cx="400" cy="72" r="5"></circle><circle cx="425" cy="85" r="5"></circle><circle cx="445" cy="105" r="5"></circle><circle cx="395" cy="115" r="5"></circle><circle cx="420" cy="125" r="5"></circle><circle cx="440" cy="130" r="5"></circle><circle cx="368" cy="110" r="5"></circle><circle cx="410" cy="98" r="5"></circle><circle cx="460" cy="88" r="5"></circle><circle cx="390" cy="135" r="5"></circle><circle cx="430" cy="108" r="5"></circle></g>
+<g class="pa-cl pa-c3" fill="#ffffff" stroke="#1c1e22" stroke-width="1.5"><circle cx="115" cy="260" r="5"></circle><circle cx="135" cy="245" r="5"></circle><circle cx="160" cy="255" r="5"></circle><circle cx="178" cy="275" r="5"></circle><circle cx="125" cy="285" r="5"></circle><circle cx="150" cy="297" r="5"></circle><circle cx="110" cy="302" r="5"></circle><circle cx="172" cy="306" r="5"></circle><circle cx="142" cy="272" r="5"></circle><circle cx="192" cy="260" r="5"></circle></g>
+<g class="pa-cl pa-c4" fill="#e4f5fe" stroke="#37b7f8" stroke-width="1.5"><circle cx="390" cy="260" r="5"></circle><circle cx="410" cy="242" r="5"></circle><circle cx="435" cy="255" r="5"></circle><circle cx="455" cy="272" r="5"></circle><circle cx="400" cy="285" r="5"></circle><circle cx="425" cy="302" r="5"></circle><circle cx="447" cy="297" r="5"></circle><circle cx="378" cy="292" r="5"></circle><circle cx="420" cy="268" r="5"></circle><circle cx="466" cy="250" r="5"></circle><circle cx="396" cy="314" r="5"></circle></g>
+<g font-size="14" font-weight="600" fill="#1c1e22" font-family="Pretendard, system-ui, sans-serif">
+<text x="52" y="38">Time-pressed planners</text>
+<text x="352" y="38">Value seekers</text>
+<text x="84" y="360">Cautious newcomers</text>
+<text x="352" y="366">Experience chasers</text>
+</g>
+</svg>
+</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px">
+<div class="pa-card pa-view r-grid1" style="border: 1px solid #e1e4e8; border-radius: 10px; padding: 20px 24px; display: grid; grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; align-items: center; gap: 8px; font-size: 15px; line-height: 22px; font-weight: 600"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#1c1e22"></circle></svg>Time-pressed planners</div><div style="font-size: 12px; line-height: 16px; color: #55585f; font-variant-numeric: tabular-nums">31% of customers</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #55585f">Context</div><div style="font-size: 14px; line-height: 20px">Shop late, in short bursts, between obligations</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #0a73b5; font-weight: 500">Unmet need</div><div style="font-size: 14px; line-height: 20px; font-weight: 600">Finish without another decision</div></div>
+</div>
+<div class="pa-card pa-view r-grid1" style="border: 1px solid #e1e4e8; border-radius: 10px; padding: 20px 24px; display: grid; grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; align-items: center; gap: 8px; font-size: 15px; line-height: 22px; font-weight: 600"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#37b7f8"></circle></svg>Value seekers</div><div style="font-size: 12px; line-height: 16px; color: #55585f; font-variant-numeric: tabular-nums">27% of customers</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #55585f">Context</div><div style="font-size: 14px; line-height: 20px">Compare several options before every purchase</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #0a73b5; font-weight: 500">Unmet need</div><div style="font-size: 14px; line-height: 20px; font-weight: 600">Proof they made the smart choice</div></div>
+</div>
+<div class="pa-card pa-view r-grid1" style="border: 1px solid #e1e4e8; border-radius: 10px; padding: 20px 24px; display: grid; grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; align-items: center; gap: 8px; font-size: 15px; line-height: 22px; font-weight: 600"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="#ffffff" stroke="#1c1e22" stroke-width="1.5"></circle></svg>Cautious newcomers</div><div style="font-size: 12px; line-height: 16px; color: #55585f; font-variant-numeric: tabular-nums">22% of customers</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #55585f">Context</div><div style="font-size: 14px; line-height: 20px">Browse repeatedly but rarely take the first step</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #0a73b5; font-weight: 500">Unmet need</div><div style="font-size: 14px; line-height: 20px; font-weight: 600">A safe way to try before committing</div></div>
+</div>
+<div class="pa-card pa-view r-grid1" style="border: 1px solid #e1e4e8; border-radius: 10px; padding: 20px 24px; display: grid; grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; align-items: center; gap: 8px; font-size: 15px; line-height: 22px; font-weight: 600"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="#e4f5fe" stroke="#37b7f8" stroke-width="1.5"></circle></svg>Experience chasers</div><div style="font-size: 12px; line-height: 16px; color: #55585f; font-variant-numeric: tabular-nums">20% of customers</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #55585f">Context</div><div style="font-size: 14px; line-height: 20px">Open the app often, leave when nothing is new</div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #0a73b5; font-weight: 500">Unmet need</div><div style="font-size: 14px; line-height: 20px; font-weight: 600">A reason to come back tomorrow</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="outputs" style="flex-shrink: 0; padding: 96px var(--gutter); box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 980px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 600; color: #0a73b5">What you get</div>
+<h2 class="pa-view" style="margin: 0; font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.02em">Each profile is emitted as artifacts a team can act on</h2>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #55585f">The persona card reports measured stability per dimension. Its reverse face carries handling rules derived from those measurements. The store card passes the open question to the floor. The timing panel is calculated from the observed return curve. <b style="font-weight: 600; color: #1c1e22">All regenerate when the behaviour moves.</b></p>
+</div>
+<div style="height: 1px; background: #e1e4e8"></div>
+<div class="pa-view" id="outputs-grid" style="display: grid; grid-template-columns: 276px 276px 408px 192px; gap: 16px; align-items: start">
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="background: #ffffff; border: 1px solid #e1e4e8; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-height: 900px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; font-size: 12px; line-height: 16px; color: #55585f"><span>Profile 01</span><span style="display: inline-flex; align-items: center; gap: 4px; color: #0a73b5; font-weight: 500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Instrumented</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700">The Decision Surfer</h3>
+<div style="font-size: 14px; line-height: 20px; color: #55585f">Knows the taste. Never settles the purchase.</div>
+</div>
+<div style="display: flex; align-items: baseline; gap: 8px; padding: 12px 0; border-top: 1px solid #e1e4e8; border-bottom: 1px solid #e1e4e8"><span style="font-size: 24px; line-height: 32px; font-weight: 700; font-variant-numeric: tabular-nums">10.2%</span><span style="font-size: 12px; line-height: 16px; color: #55585f">of the modeled customer base</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; line-height: 18px">
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #0a73b5">Taste</span><span>Wide silhouette, easy shoulder. Similarity 0.974.</span></div>
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #0a73b5">Role</span><span>Price is the garment’s job, not a ceiling.</span></div>
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #0a73b5">Method</span><span>Starts on a product page she already knows.</span></div>
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #9a5b00">Brand</span><span>2.71 top-brand switches a year; 7.7% persist.</span></div>
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #9a5b00">Pool</span><span>9.0 brands in play, 7.4 new to her.</span></div>
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #9a5b00">Choice</span><span>47.8% of journeys re-open after the cart.</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 0; border-top: 1px solid #e1e4e8; border-bottom: 1px solid #e1e4e8; font-size: 12px; line-height: 16px; color: #55585f">
+<div style="display: flex; justify-content: space-between; margin-bottom: 2px"><span style="display: inline-flex; align-items: center; gap: 4px"><svg width="16" height="6" viewBox="0 0 16 6" aria-hidden="true"><path d="M0 3 H16" stroke="#37b7f8" stroke-width="2"></path></svg>Stable</span><span style="display: inline-flex; align-items: center; gap: 4px"><svg width="16" height="6" viewBox="0 0 16 6" aria-hidden="true"><path d="M0 5 L4 1 L8 5 L12 1 L16 5" stroke="#9a5b00" stroke-width="1.5" fill="none" pathLength="1" class="pa-draw"></path></svg>Volatile</span></div>
+<div style="display: grid; grid-template-columns: 56px 100px minmax(0, 1fr); align-items: center; gap: 6px"><span>Taste</span><svg width="100" height="14" viewBox="0 0 100 14" aria-hidden="true"><path d="M0 7 C 12 4, 25 10, 37 7 S 62 4, 75 7 S 92 10, 100 7" stroke="#37b7f8" stroke-width="2" fill="none" pathLength="1" class="pa-draw"></path></svg><span style="text-align: right; color: #1c1e22; font-variant-numeric: tabular-nums">0.974</span></div>
+<div style="display: grid; grid-template-columns: 56px 100px minmax(0, 1fr); align-items: center; gap: 6px"><span>Emotion</span><svg width="100" height="14" viewBox="0 0 100 14" aria-hidden="true"><path d="M0 8 C 12 5, 25 9, 37 7 S 62 5, 75 8 S 92 9, 100 7" stroke="#37b7f8" stroke-width="2" fill="none" pathLength="1" class="pa-draw"></path></svg><span style="text-align: right; color: #1c1e22">steady</span></div>
+<div style="display: grid; grid-template-columns: 56px 100px minmax(0, 1fr); align-items: center; gap: 6px"><span>Brand</span><svg width="100" height="14" viewBox="0 0 100 14" aria-hidden="true"><path d="M0 3 L7 11 L14 3 L21 11 L28 3 L35 11 L42 3 L49 11 L56 3 L63 11 L70 3 L77 11 L84 3 L91 11 L100 3" stroke="#9a5b00" stroke-width="1.5" fill="none" pathLength="1" class="pa-draw"></path></svg><span style="text-align: right; color: #1c1e22; font-variant-numeric: tabular-nums">2.71×</span></div>
+<div style="display: grid; grid-template-columns: 56px 100px minmax(0, 1fr); align-items: center; gap: 6px"><span>Pool</span><svg width="100" height="14" viewBox="0 0 100 14" aria-hidden="true"><path d="M0 11 L7 3 L14 11 L21 3 L28 11 L35 3 L42 11 L49 3 L56 11 L63 3 L70 11 L77 3 L84 11 L91 3 L100 11" stroke="#9a5b00" stroke-width="1.5" fill="none" pathLength="1" class="pa-draw"></path></svg><span style="text-align: right; color: #1c1e22; font-variant-numeric: tabular-nums">82.0% new</span></div>
+<div style="display: grid; grid-template-columns: 56px 100px minmax(0, 1fr); align-items: center; gap: 6px"><span>Decision</span><svg width="100" height="14" viewBox="0 0 100 14" aria-hidden="true"><path d="M0 3 L7 11 L14 3 L21 11 L28 3 L35 11 L42 3 L49 11 L56 3 L63 11 L70 3 L77 11 L84 3 L91 11 L100 3" stroke="#9a5b00" stroke-width="1.5" fill="none" pathLength="1" class="pa-draw"></path></svg><span style="text-align: right; color: #1c1e22; font-variant-numeric: tabular-nums">47.8%</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 18px; line-height: 24px; font-weight: 700; font-variant-numeric: tabular-nums">0.974</span><span style="font-size: 12px; line-height: 16px; color: #55585f">1Y taste similarity</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 18px; line-height: 24px; font-weight: 700; font-variant-numeric: tabular-nums">95.0%</span><span style="font-size: 12px; line-height: 16px; color: #55585f">Product-page entry</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 18px; line-height: 24px; font-weight: 700; font-variant-numeric: tabular-nums">14.8%</span><span style="font-size: 12px; line-height: 16px; color: #55585f">Return-experience rate</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 18px; line-height: 24px; font-weight: 700; font-variant-numeric: tabular-nums">10.58d</span><span style="font-size: 12px; line-height: 16px; color: #55585f">Mean return lag</span></div>
+</div>
+<div style="margin-top: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<a href="#outputs" style="display: flex; align-items: center; justify-content: center; height: 40px; border: 1px solid #7f838b; border-radius: 6px; background: #ffffff; color: #1c1e22; font-size: 13px; font-weight: 600; text-decoration: none">Handling rules</a>
+<a href="#try" style="display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 6px; background: #0a73b5; color: #ffffff; font-size: 13px; font-weight: 600; text-decoration: none">Talk with persona</a>
+</div>
+</div>
+<div style="font-size: 13px; line-height: 18px; color: #55585f"><b style="font-weight: 600; color: #1c1e22">Persona card.</b> Fixed and volatile dimensions.</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="background: #eceef1; border: 1px solid #e1e4e8; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-height: 900px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; font-size: 12px; line-height: 16px; color: #55585f"><span>Profile 01</span><span>Handling rules</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700">How to handle this customer</h3>
+<div style="font-size: 14px; line-height: 20px; color: #55585f">The Decision Surfer</div>
+</div>
+<div style="display: flex; flex-direction: column; font-size: 13px; line-height: 19px">
+<div style="display: flex; gap: 10px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px; background: #1c1e22; color: #ffffff; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Don't"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span><span><b style="font-weight: 600">Do not add candidates.</b> Resolve the ones already open.</span></div>
+<div style="display: flex; gap: 10px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px; background: #1c1e22; color: #ffffff; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Don't"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span><span><b style="font-weight: 600">Do not read a brand switch as churn.</b> Taste held at 0.974 while brands changed 2.71 times.</span></div>
+<div style="display: flex; gap: 10px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px; background: #e8f4fc; color: #0a73b5; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Do"><path d="M20 6 9 17l-5-5"></path></svg></span><span><b style="font-weight: 600">Intervene day 5 to day 10.</b> Median return lands at 9.23 days.</span></div>
+<div style="display: flex; gap: 10px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px; background: #1c1e22; color: #ffffff; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Don't"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span><span><b style="font-weight: 600">Do not discount to close.</b> Give the comparison she is missing instead.</span></div>
+<div style="display: flex; gap: 10px; padding: 14px 0; border-top: 1px solid #e1e4e8; border-bottom: 1px solid #e1e4e8"><span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px; background: #e8f4fc; color: #0a73b5; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Do"><path d="M20 6 9 17l-5-5"></path></svg></span><span><b style="font-weight: 600">In store, build conviction.</b> Load her own shortlist, never new stock.</span></div>
+</div>
+<div style="font-size: 12px; line-height: 16px; color: #55585f">Each rule is derived from the measures on the front of the card, and changes when they do.</div>
+<div style="margin-top: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<a href="#outputs" style="display: flex; align-items: center; justify-content: center; height: 40px; border: 1px solid #7f838b; border-radius: 6px; background: #ffffff; color: #1c1e22; font-size: 13px; font-weight: 600; text-decoration: none">Back to profile</a>
+<a href="#try" style="display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 6px; background: #0a73b5; color: #ffffff; font-size: 13px; font-weight: 600; text-decoration: none">Talk with persona</a>
+</div>
+</div>
+<div style="font-size: 13px; line-height: 18px; color: #55585f"><b style="font-weight: 600; color: #1c1e22">Handling rules.</b> Derived, not authored.</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="background: #ffffff; border: 1px solid #e1e4e8; border-radius: 10px; display: flex; flex-direction: column; min-height: 900px; box-sizing: border-box; overflow: hidden">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #e1e4e8; font-size: 13px; line-height: 18px; font-weight: 500; color: #55585f"><span>Store context · Profile 01</span><span style="display: inline-flex; padding: 2px 10px; border-radius: 999px; background: #e8f4fc; color: #0a73b5">Day 7</span></div>
+<div style="padding: 24px; display: flex; flex-direction: column">
+<h3 style="margin: 0 0 16px; font-size: 26px; line-height: 34px; font-weight: 700">The Decision Surfer</h3>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Arrived from</span><span style="font-size: 15px; line-height: 22px">Direct product-page entry · 3 sessions in the last 48 hours</span></div>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Holding</span><span style="font-size: 15px; line-height: 22px">Wide silhouette · blouse · cardigan · light outerwear</span></div>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Brands under review</span><span style="font-size: 15px; line-height: 22px">B-01 · B-04 · B-09 · B-12 — three of the four are new to her</span></div>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Purchase in window</span><span style="font-size: 15px; line-height: 22px">1 outerwear · high price band · day 7 of a 9.23-day median</span></div>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">State</span><span style="font-size: 15px; line-height: 22px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start"><span style="display: inline-flex; padding: 2px 8px; border-radius: 999px; background: #fff3dc; color: #9a5b00; font-size: 13px; line-height: 18px; font-weight: 500">Decision still live</span>Candidates re-opened · return decision still live</span></div>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 16px; margin: 0 -8px; border-radius: 6px; background: #e4f5fe; border: 1px solid #37b7f8"><span style="font-size: 13px; line-height: 20px; font-weight: 600; color: #1c1e22">Do</span><span style="font-size: 15px; line-height: 22px">Compare what she already holds. Offer exchange before refund. Load her shortlist into the fitting room.</span></div>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 16px; margin: 8px -8px 0; border-radius: 6px; background: #eceef1"><span style="font-size: 13px; line-height: 20px; font-weight: 600; color: #1c1e22">Do not</span><span style="font-size: 15px; line-height: 22px">Introduce new stock. Re-ask her taste. Hand her a discount to close.</span></div>
+</div>
+</div>
+<div style="font-size: 13px; line-height: 18px; color: #55585f"><b style="font-weight: 600; color: #1c1e22">Store context card.</b> Decision state issued to floor staff.</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="background: #ffffff; border: 1px solid #e1e4e8; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 28px; line-height: 34px; font-weight: 700; letter-spacing: -0.02em; color: #0a73b5">Day 5 to 10</div>
+<div style="font-size: 13px; line-height: 19px">Mean return at 10.58 days, median 9.23. This band holds about 31 points of the cumulative curve.</div>
+</div>
+<svg width="150" height="56" viewBox="0 0 150 56" role="img" aria-label="Cumulative return curve with the day 5 to 10 band highlighted"><rect class="pa-band" x="32" y="0" width="42" height="52" fill="#e4f5fe"></rect><path pathLength="1" class="pa-draw" d="M0 52 C 20 51, 30 48, 45 36 S 70 14, 90 9 S 130 4, 150 3" stroke="#1c1e22" stroke-width="1.5" fill="none"></path><path d="M0 52.5 H150" stroke="#e1e4e8"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 4px; padding-top: 12px; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 18px; font-weight: 600">Online</span><span style="font-size: 13px; line-height: 19px; color: #55585f">Size and fit detail, exchange options, prior shortlist restored</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding-top: 12px; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 18px; font-weight: 600">In store</span><span style="font-size: 13px; line-height: 19px; color: #55585f">Fitting-room exchange booked while the item remains keepable</span></div>
+</div>
+<div style="font-size: 13px; line-height: 18px; color: #55585f"><b style="font-weight: 600; color: #1c1e22">Intervention timing.</b> Calculated from the return distribution.</div>
+</div>
+
+</div>
+</section>
+
+<section id="try" style="flex-shrink: 0; padding: 96px var(--gutter); box-sizing: border-box; background: #ffffff; border-top: 1px solid #e1e4e8; border-bottom: 1px solid #e1e4e8; display: flex; flex-direction: column; gap: 48px">
+<div class="r-stack" style="display: flex; justify-content: space-between; align-items: center; gap: 64px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<div style="font-size: 13px; line-height: 18px; font-weight: 600; color: #0a73b5">Try the demo</div>
+<h2 class="pa-view" style="margin: 0; font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.02em">Open a persona cluster and see what your team receives</h2>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #55585f">Open The Decision Surfer on the map. Read its persona card, flip it for handling rules, pass it to the store floor, time the intervention — then talk with the persona.</p>
+</div>
+</div>
+
+<div class="r-stack" style="display: flex; gap: 24px; min-height: 700px">
+<div class="r-full" style="width: 420px; flex-shrink: 0; border: 1px solid #e1e4e8; border-radius: 10px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; background: #f6f7f9">
+<div style="display: flex; justify-content: space-between; align-items: center"><div style="font-size: 16px; line-height: 24px; font-weight: 600">Persona map</div></div>
+<div style="position: relative; width: 100%; max-width: 372px; aspect-ratio: 372 / 263; border-radius: 10px; background: #ffffff; border: 1px solid #e1e4e8">
+
+<button type="button" id="cl-01" data-open aria-pressed="false" aria-label="Open The Decision Surfer" class="pa-clbtn"><span class="pa-clpill">The Decision Surfer</span></button>
+<svg viewBox="0 0 552 390" aria-hidden="true" style="display: block; width: 100%; height: auto">
+<g fill="#e1e4e8"><circle cx="272" cy="190" r="4"></circle><circle cx="250" cy="150" r="4"></circle><circle cx="300" cy="222" r="4"></circle><circle cx="282" cy="72" r="4"></circle><circle cx="318" cy="160" r="4"></circle></g>
+<g fill="#1c1e22"><circle cx="100" cy="100" r="6"></circle><circle cx="118" cy="80" r="6"></circle><circle cx="160" cy="110" r="6"></circle><circle cx="125" cy="122" r="6"></circle><circle cx="150" cy="138" r="6"></circle><circle cx="105" cy="130" r="6"></circle><circle cx="135" cy="150" r="6"></circle><circle cx="172" cy="90" r="6"></circle><circle cx="88" cy="116" r="6"></circle><circle cx="115" cy="105" r="6"></circle><circle cx="155" cy="123" r="6"></circle><circle cx="140" cy="92" r="6"></circle></g>
+<g fill="#37b7f8"><circle cx="380" cy="90" r="6"></circle><circle cx="400" cy="72" r="6"></circle><circle cx="425" cy="85" r="6"></circle><circle cx="445" cy="105" r="6"></circle><circle cx="395" cy="115" r="6"></circle><circle cx="420" cy="125" r="6"></circle><circle cx="440" cy="130" r="6"></circle><circle cx="368" cy="110" r="6"></circle><circle cx="410" cy="98" r="6"></circle><circle cx="460" cy="88" r="6"></circle></g>
+<g fill="#ffffff" stroke="#1c1e22" stroke-width="1.5"><circle cx="115" cy="260" r="6"></circle><circle cx="135" cy="245" r="6"></circle><circle cx="160" cy="255" r="6"></circle><circle cx="178" cy="275" r="6"></circle><circle cx="125" cy="285" r="6"></circle><circle cx="150" cy="297" r="6"></circle><circle cx="110" cy="302" r="6"></circle><circle cx="172" cy="306" r="6"></circle><circle cx="142" cy="272" r="6"></circle></g>
+<g fill="#e4f5fe" stroke="#37b7f8" stroke-width="1.5"><circle cx="390" cy="260" r="6"></circle><circle cx="410" cy="242" r="6"></circle><circle cx="435" cy="255" r="6"></circle><circle cx="455" cy="272" r="6"></circle><circle cx="400" cy="285" r="6"></circle><circle cx="425" cy="302" r="6"></circle><circle cx="447" cy="297" r="6"></circle><circle cx="378" cy="292" r="6"></circle><circle cx="420" cy="268" r="6"></circle></g>
+</svg></div>
+<div data-if="noCluster" style="display: contents">
+<div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 6px; background: #e8f4fc; font-size: 13px; line-height: 19px; color: #1c1e22"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a73b5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M9 11V6a3 3 0 0 1 6 0v5"></path><path d="M6 11h12l-1 10H7z"></path></svg><span>Select The Decision Surfer on the map to open its persona.</span></div>
+</div>
+<div data-if="hasCluster" style="display: contents">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 10px; background: #ffffff; border: 1px solid #e1e4e8">
+<div style="font-size: 12px; line-height: 16px; color: #55585f">Selected · Profile 01</div>
+<div style="font-size: 18px; line-height: 26px; font-weight: 700">The Decision Surfer</div>
+<div style="font-size: 13px; line-height: 19px; color: #55585f">10.2% of the modeled customer base. Stable taste, volatile brand choice, re-opened decisions.</div>
+</div>
+</div>
+</div>
+
+<div style="flex-grow: 1; border: 1px solid #e1e4e8; border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; background: #ffffff">
+<div data-if="noCluster" style="display: contents">
+<div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 48px; text-align: center">
+<svg width="120" height="80" viewBox="0 0 120 80" aria-hidden="true"><ellipse cx="60" cy="40" rx="52" ry="32" fill="#e4f5fe" stroke="#37b7f8" stroke-dasharray="4 4"></ellipse><circle cx="44" cy="36" r="5" fill="#1c1e22"></circle><circle cx="60" cy="28" r="5" fill="#1c1e22"></circle><circle cx="74" cy="44" r="5" fill="#1c1e22"></circle><circle cx="56" cy="50" r="5" fill="#1c1e22"></circle></svg>
+<div style="font-size: 20px; line-height: 28px; font-weight: 600">No cluster selected</div>
+<div style="font-size: 14px; line-height: 20px; color: #55585f; max-width: 360px">Select The Decision Surfer on the map to open its persona card.</div>
+<button type="button" data-open style="height: 44px; padding: 0 20px; border: 0; border-radius: 6px; background: #0a73b5; color: #ffffff; font-family: inherit; font-size: 14px; font-weight: 600">Open The Decision Surfer</button>
+</div>
+</div>
+
+<div data-if="hasCluster" style="display: contents">
+<div role="tablist" aria-label="Profile artifacts" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 12px 16px; border-bottom: 1px solid #e1e4e8; background: #f6f7f9">
+<button type="button" role="tab" class="pa-tab" data-go="0" aria-selected="false">Persona card</button>
+<button type="button" role="tab" class="pa-tab" data-go="1" aria-selected="false">Handling rules</button>
+<button type="button" role="tab" class="pa-tab" data-go="2" aria-selected="false">Store context</button>
+<button type="button" role="tab" class="pa-tab" data-go="3" aria-selected="false">Timing</button>
+<button type="button" role="tab" class="pa-tab" data-go="4" aria-selected="false">Talk with persona</button>
+</div>
+
+<div data-if="s0" style="display: contents">
+<div class="pa-in" style="flex-grow: 1; padding: 28px 32px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #55585f">Profile 01 · Persona card</div><h3 style="margin: 0; font-size: 26px; line-height: 34px; font-weight: 700">The Decision Surfer</h3><div style="font-size: 14px; line-height: 20px; color: #55585f">Knows the taste. Never settles the purchase.</div></div>
+<div style="display: flex; flex-direction: column; align-items: flex-end"><span style="font-size: 32px; line-height: 40px; font-weight: 700; font-variant-numeric: tabular-nums">10.2%</span><span style="font-size: 12px; line-height: 16px; color: #55585f">of the modeled customer base</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; padding: 16px 0; border-top: 1px solid #e1e4e8; border-bottom: 1px solid #e1e4e8; font-size: 14px; line-height: 20px">
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #0a73b5">Taste</span><span>Wide silhouette, easy shoulder. Similarity 0.974.</span></div>
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #9a5b00">Brand</span><span>2.71 top-brand switches a year; 7.7% persist.</span></div>
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #0a73b5">Role</span><span>Price is the garment’s job, not a ceiling.</span></div>
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #9a5b00">Pool</span><span>9.0 brands in play, 7.4 new to her.</span></div>
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #0a73b5">Method</span><span>Starts on a product page she already knows.</span></div>
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px"><span style="font-weight: 500; color: #9a5b00">Choice</span><span>47.8% of journeys re-open after the cart.</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; line-height: 28px; font-weight: 700; font-variant-numeric: tabular-nums">0.974</span><span style="font-size: 12px; line-height: 16px; color: #55585f">1Y taste similarity</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; line-height: 28px; font-weight: 700; font-variant-numeric: tabular-nums">95.0%</span><span style="font-size: 12px; line-height: 16px; color: #55585f">Product-page entry</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; line-height: 28px; font-weight: 700; font-variant-numeric: tabular-nums">14.8%</span><span style="font-size: 12px; line-height: 16px; color: #55585f">Return-experience rate</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; line-height: 28px; font-weight: 700; font-variant-numeric: tabular-nums">10.58d</span><span style="font-size: 12px; line-height: 16px; color: #55585f">Mean return lag</span></div>
+</div>
+<div style="margin-top: auto; display: flex; gap: 8px; justify-content: flex-end">
+<button type="button" data-go="4" style="height: 44px; padding: 0 20px; border: 1px solid #7f838b; border-radius: 6px; background: #ffffff; color: #1c1e22; font-family: inherit; font-size: 14px; font-weight: 600">Talk with persona</button>
+<button type="button" data-go="1" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; border: 0; border-radius: 6px; background: #0a73b5; color: #ffffff; font-family: inherit; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"></path><path d="M21 3v5h-5"></path></svg>Flip for handling rules</button>
+</div>
+</div>
+</div>
+
+<div data-if="s1" style="display: contents">
+<div class="pa-flip" style="flex-grow: 1; padding: 28px 32px; display: flex; flex-direction: column; gap: 16px; background: #eceef1">
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; line-height: 16px; color: #55585f">Profile 01 · Handling rules</div><h3 style="margin: 0; font-size: 26px; line-height: 34px; font-weight: 700">How to handle this customer</h3></div>
+<div style="display: flex; flex-direction: column; font-size: 15px; line-height: 22px">
+<div style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 22px; height: 22px; flex-shrink: 0; border-radius: 6px; background: #1c1e22; color: #ffffff; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Don't"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span><span><b style="font-weight: 600">Do not add candidates.</b> Resolve the ones already open.</span></div>
+<div style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 22px; height: 22px; flex-shrink: 0; border-radius: 6px; background: #1c1e22; color: #ffffff; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Don't"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span><span><b style="font-weight: 600">Do not read a brand switch as churn.</b> Taste held at 0.974 while brands changed 2.71 times.</span></div>
+<div style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 22px; height: 22px; flex-shrink: 0; border-radius: 6px; background: #e8f4fc; color: #0a73b5; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Do"><path d="M20 6 9 17l-5-5"></path></svg></span><span><b style="font-weight: 600">Intervene day 5 to day 10.</b> Median return lands at 9.23 days.</span></div>
+<div style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #e1e4e8"><span style="width: 22px; height: 22px; flex-shrink: 0; border-radius: 6px; background: #1c1e22; color: #ffffff; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Don't"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span><span><b style="font-weight: 600">Do not discount to close.</b> Give the comparison she is missing instead.</span></div>
+<div style="display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid #e1e4e8; border-bottom: 1px solid #e1e4e8"><span style="width: 22px; height: 22px; flex-shrink: 0; border-radius: 6px; background: #e8f4fc; color: #0a73b5; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Do"><path d="M20 6 9 17l-5-5"></path></svg></span><span><b style="font-weight: 600">In store, build conviction.</b> Load her own shortlist, never new stock.</span></div>
+</div>
+<div style="font-size: 12px; line-height: 16px; color: #55585f">Each rule is derived from the measures on the front of the card, and changes when they do.</div>
+<div style="margin-top: auto; display: flex; gap: 8px; justify-content: flex-end">
+<button type="button" data-go="0" style="height: 44px; padding: 0 20px; border: 1px solid #7f838b; border-radius: 6px; background: #ffffff; color: #1c1e22; font-family: inherit; font-size: 14px; font-weight: 600">Back to profile</button>
+<button type="button" data-go="2" style="height: 44px; padding: 0 20px; border: 0; border-radius: 6px; background: #0a73b5; color: #ffffff; font-family: inherit; font-size: 14px; font-weight: 600">Next: store context</button>
+</div>
+</div>
+</div>
+
+<div data-if="s2" style="display: contents">
+<div class="pa-in" style="flex-grow: 1; padding: 28px 32px; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px"><div style="font-size: 12px; line-height: 16px; color: #55585f">Store context · Profile 01</div><span style="display: inline-flex; padding: 2px 10px; border-radius: 999px; background: #e8f4fc; color: #0a73b5; font-size: 13px; line-height: 18px; font-weight: 500">Day 7</span></div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Arrived from</span><span style="font-size: 15px; line-height: 22px">Direct product-page entry · 3 sessions in the last 48 hours</span></div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Holding</span><span style="font-size: 15px; line-height: 22px">Wide silhouette · blouse · cardigan · light outerwear</span></div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Brands under review</span><span style="font-size: 15px; line-height: 22px">B-01 · B-04 · B-09 · B-12 — three of the four are new to her</span></div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">Purchase in window</span><span style="font-size: 15px; line-height: 22px">1 outerwear · high price band · day 7 of a 9.23-day median</span></div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid #e1e4e8"><span style="font-size: 13px; line-height: 20px; font-weight: 500; color: #55585f">State</span><span style="font-size: 15px; line-height: 22px">Candidates re-opened · return decision still live</span></div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 16px; margin-top: 8px; border-radius: 6px; background: #e4f5fe; border: 1px solid #37b7f8"><span style="font-size: 13px; line-height: 20px; font-weight: 600">Do</span><span style="font-size: 15px; line-height: 22px">Compare what she already holds. Offer exchange before refund. Load her shortlist into the fitting room.</span></div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 16px; margin-top: 8px; border-radius: 6px; background: #eceef1"><span style="font-size: 13px; line-height: 20px; font-weight: 600">Do not</span><span style="font-size: 15px; line-height: 22px">Introduce new stock. Re-ask her taste. Hand her a discount to close.</span></div>
+<div style="margin-top: auto; display: flex; gap: 8px; justify-content: flex-end">
+<button type="button" data-go="1" style="height: 44px; padding: 0 20px; border: 1px solid #7f838b; border-radius: 6px; background: #ffffff; color: #1c1e22; font-family: inherit; font-size: 14px; font-weight: 600">Back</button>
+<button type="button" data-go="3" style="height: 44px; padding: 0 20px; border: 0; border-radius: 6px; background: #0a73b5; color: #ffffff; font-family: inherit; font-size: 14px; font-weight: 600">Next: intervention timing</button>
+</div>
+</div>
+</div>
+
+<div data-if="s3" style="display: contents">
+<div class="pa-in" style="flex-grow: 1; padding: 28px 32px; display: flex; flex-direction: column; gap: 20px">
+<div style="font-size: 12px; line-height: 16px; color: #55585f">Intervention timing · Profile 01</div>
+<div style="display: flex; gap: 32px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 8px; width: 260px; flex-shrink: 0">
+<div style="font-size: 44px; line-height: 52px; font-weight: 700; letter-spacing: -0.02em; color: #0a73b5">Day 5 to 10</div>
+<div style="font-size: 15px; line-height: 22px">Mean return at 10.58 days, median 9.23. This band holds about 31 points of the cumulative curve.</div>
+</div>
+<svg width="360" height="180" viewBox="0 0 360 180" role="img" aria-label="Cumulative return curve with the day 5 to 10 band highlighted" style="flex-shrink: 0"><rect class="pa-band" x="78" y="10" width="78" height="150" fill="#e4f5fe"></rect><path d="M0 160.5 H360" stroke="#e1e4e8"></path><path class="pa-draw" pathLength="1" d="M0 158 C 40 156, 70 145, 105 105 S 160 40, 220 26 S 310 14, 360 12" stroke="#1c1e22" stroke-width="2" fill="none"></path><text x="117" y="178" text-anchor="middle" font-size="12" fill="#55585f" font-family="Pretendard, system-ui, sans-serif">Day 5–10</text></svg>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div style="padding: 16px; border: 1px solid #e1e4e8; border-radius: 10px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; line-height: 20px; font-weight: 600">Online</span><span style="font-size: 14px; line-height: 20px; color: #55585f">Size and fit detail, exchange options, prior shortlist restored</span></div>
+<div style="padding: 16px; border: 1px solid #e1e4e8; border-radius: 10px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; line-height: 20px; font-weight: 600">In store</span><span style="font-size: 14px; line-height: 20px; color: #55585f">Fitting-room exchange booked while the item remains keepable</span></div>
+</div>
+<div style="margin-top: auto; display: flex; gap: 8px; justify-content: flex-end">
+<button type="button" data-go="2" style="height: 44px; padding: 0 20px; border: 1px solid #7f838b; border-radius: 6px; background: #ffffff; color: #1c1e22; font-family: inherit; font-size: 14px; font-weight: 600">Back</button>
+<button type="button" data-go="4" style="height: 44px; padding: 0 20px; border: 0; border-radius: 6px; background: #0a73b5; color: #ffffff; font-family: inherit; font-size: 14px; font-weight: 600">Talk with persona</button>
+</div>
+</div>
+</div>
+
+<div data-if="s4" style="display: contents">
+<div class="pa-in" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0">
+<div style="display: flex; align-items: center; gap: 12px; padding: 16px 32px; border-bottom: 1px solid #e1e4e8">
+<div style="width: 36px; height: 36px; border-radius: 999px; background: #e4f5fe; border: 1px solid #37b7f8; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1c1e22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2"></circle><circle cx="18" cy="7" r="2"></circle><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="17" r="2"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>
+<div style="display: flex; flex-direction: column"><span style="font-size: 15px; line-height: 22px; font-weight: 600">The Decision Surfer</span><span style="font-size: 12px; line-height: 16px; color: #55585f">Speaking as the cluster · Profile 01</span></div>
+</div>
+<div style="flex-grow: 1; padding: 20px 32px; display: flex; flex-direction: column; gap: 12px; overflow: auto">
+<div data-if="noMessages" style="display: contents">
+<div style="font-size: 14px; line-height: 20px; color: #55585f">Ask the persona a question below.</div>
+</div>
+<div id="chat-log" style="display: contents"></div>
+</div>
+<div style="padding: 16px 32px; border-top: 1px solid #e1e4e8; display: flex; flex-direction: column; gap: 10px; background: #f6f7f9">
+<div style="font-size: 12px; line-height: 16px; color: #55585f">Suggested questions</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div id="chat-chips" style="display: contents"></div>
+<div data-if="allAsked" style="display: contents">
+<button type="button" id="chat-reset" style="min-height: 40px; padding: 8px 14px; border: 1px solid #7f838b; border-radius: 999px; background: #ffffff; color: #1c1e22; font-family: inherit; font-size: 13px; font-weight: 500">Start over</button>
+</div>
+</div>
+<div style="font-size: 12px; line-height: 16px; color: #55585f">Every reply is bound to a metric.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="inquiry" class="r-stack" style="flex-shrink: 0; padding: 96px var(--gutter); box-sizing: border-box; background: #e4f5fe; border-top: 1px solid #e1e4e8; display: flex; justify-content: space-between; align-items: center; gap: 64px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 600px">
+<h2 class="pa-view" style="margin: 0; font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.02em">Get in touch</h2>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #1c1e22">Questions about Person A, a partnership, or your customer data? Send us a note.</p>
+</div>
+<form id="inquiry-form" class="r-full" novalidate style="width: 480px; flex-shrink: 0; background: #ffffff; border: 1px solid #e1e4e8; border-radius: 10px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<div id="inq-fields" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="inq-name" style="font-size: 13px; line-height: 18px; font-weight: 500">Name</label>
+<input id="inq-name" name="name" type="text" autocomplete="name" style="height: 44px; padding: 0 12px; border: 1px solid #7f838b; border-radius: 6px; font-family: inherit; font-size: 14px; color: #1c1e22; background: #ffffff; box-sizing: border-box">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="inq-email" style="font-size: 13px; line-height: 18px; font-weight: 500">Work email</label>
+<input id="inq-email" name="email" type="email" autocomplete="email" placeholder="name@company.com" aria-describedby="inq-email-err" style="height: 44px; padding: 0 12px; border: 1px solid #7f838b; border-radius: 6px; font-family: inherit; font-size: 14px; color: #1c1e22; background: #ffffff; box-sizing: border-box">
+<div id="inq-email-err" role="alert" hidden style="font-size: 12px; line-height: 16px; color: #c62828">Enter a work email address, like name@company.com.</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="inq-msg" style="font-size: 13px; line-height: 18px; font-weight: 500">Message</label>
+<textarea id="inq-msg" name="message" rows="4" aria-describedby="inq-msg-err" style="min-height: 104px; padding: 10px 12px; resize: vertical; border: 1px solid #7f838b; border-radius: 6px; font-family: inherit; font-size: 14px; line-height: 20px; color: #1c1e22; background: #ffffff; box-sizing: border-box"></textarea>
+<div id="inq-msg-err" role="alert" hidden style="font-size: 12px; line-height: 16px; color: #c62828">Add a short message.</div>
+</div>
+<div id="inq-send-err" role="alert" hidden style="font-size: 13px; line-height: 18px; color: #c62828">The message could not be sent. Try again in a moment.</div>
+<button id="inq-submit" type="submit" style="height: 44px; border: 0; border-radius: 6px; background: #0a73b5; color: #ffffff; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Send inquiry</button>
+</div>
+<div id="inq-done" class="pa-in" role="status" hidden style="flex-direction: column; gap: 12px">
+<div style="width: 40px; height: 40px; border-radius: 999px; background: #e8f4fc; color: #0a73b5; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></div>
+<div style="font-size: 18px; line-height: 26px; font-weight: 600">Inquiry sent</div>
+<div id="inq-done-text" style="font-size: 14px; line-height: 20px; color: #55585f">We’ll reply soon.</div>
+<button id="inq-again" type="button" style="align-self: flex-start; height: 40px; padding: 0 16px; border: 1px solid #7f838b; border-radius: 6px; background: #ffffff; color: #1c1e22; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer">Send another</button>
+</div>
+</form>
+</section>
+
+<footer style="flex-grow: 1; padding: 48px var(--gutter); box-sizing: border-box; background: #ffffff; border-top: 1px solid #e1e4e8; display: flex; flex-direction: column; gap: 32px">
+<div class="r-stack" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<img src="assets/person-a-logo.png" alt="Person A" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Person A',className:'logo-fallback'}))" style="height: 56px; width: auto; display: block; align-self: flex-start">
+<div style="font-size: 14px; line-height: 20px; font-weight: 500; color: #68696e">We See People Beyond Data.</div>
+</div>
+<div style="display: flex; gap: 64px; font-size: 14px; line-height: 20px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 13px; font-weight: 600; color: #55585f">Company</div>
+<a href="#how" style="color: #1c1e22; text-decoration: none">How we work</a>
+<a href="#why" style="color: #1c1e22; text-decoration: none">Why Person A</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 13px; font-weight: 600; color: #55585f">Product</div>
+<a href="#clusters" style="color: #1c1e22; text-decoration: none">Persona clusters</a>
+<a href="#outputs" style="color: #1c1e22; text-decoration: none">What you get</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 13px; font-weight: 600; color: #55585f">Contact</div>
+<a href="mailto:contact@person-a.ai" style="color: #0a73b5">contact@person-a.ai</a>
+</div>
+</div>
+</div>
+<div style="border-top: 1px solid #e1e4e8; padding-top: 20px; display: flex; font-size: 12px; line-height: 16px; color: #55585f">
+<span>© 2026 Person A</span>
+</div>
+</footer>
+
+</div>
+<script>
+(function(){
+/* ===== Inquiry form settings =====
+   Set ONE of these before deploying:
+   INQUIRY_ENDPOINT: a form backend URL that accepts POST (e.g. Formspree, Basin, Getform, your own API).
+   CONTACT_EMAIL:    used as a mailto: fallback when no endpoint is set. */
+var INQUIRY_ENDPOINT = "";
+var CONTACT_EMAIL = "contact@person-a.ai";
+
+var QA = [
+ {q:"I’ve got four coats open and I can’t choose.", a:"Then don’t add a fifth. Two of those four are the same shape in a different label — put those side by side and the choice is about shoulder and fabric, nothing else.", tags:["Re-opened journeys 47.8%","Brands in play 9.0 · 82.0% new"]},
+ {q:"Would a coupon help you decide?", a:"No. Price is the garment’s job, not a ceiling — I buy across $24 to $152. A discount just adds a reason to re-open the whole thing.", tags:["Brand MOV $24–$152","Validated-choice reuse 50.8%"]}
+];
+var st = {open:false, step:0, asked:[]};
+var root = document.getElementById('try');
+function ifs(name, on){ root.querySelectorAll('[data-if="'+name+'"]').forEach(function(el){ el.style.display = on ? 'contents' : 'none'; }); }
+function replay(el){ if(!el) return; var c = el.firstElementChild; if(!c) return; c.style.animation='none'; void c.offsetWidth; c.style.animation=''; }
+function render(){
+ ifs('noCluster', !st.open); ifs('hasCluster', st.open);
+ for (var i=0;i<5;i++){ ifs('s'+i, st.open && st.step===i); }
+ document.getElementById('cl-01').setAttribute('aria-pressed', st.open ? 'true':'false');
+ root.querySelectorAll('.pa-tab').forEach(function(b){ b.setAttribute('aria-selected', String(+b.dataset.go===st.step)); });
+ var log = document.getElementById('chat-log'), chips = document.getElementById('chat-chips');
+ log.innerHTML=''; chips.innerHTML='';
+ st.asked.forEach(function(i){
+  var x=QA[i], w=document.createElement('div'); w.className='pa-in'; w.style.cssText='display:flex;flex-direction:column;gap:8px';
+  var q=document.createElement('div'); q.style.cssText='align-self:flex-end;max-width:420px;padding:10px 14px;border-radius:10px;background:#0a73b5;color:#fff;font-size:14px;line-height:20px'; q.textContent=x.q;
+  var a=document.createElement('div'); a.className='pa-late'; a.style.cssText='align-self:flex-start;max-width:520px;padding:12px 16px;border-radius:10px;background:#e4f5fe;display:flex;flex-direction:column;gap:10px';
+  var at=document.createElement('div'); at.style.cssText='font-size:15px;line-height:22px'; at.textContent=x.a; a.appendChild(at);
+  var tg=document.createElement('div'); tg.style.cssText='display:flex;flex-wrap:wrap;gap:6px';
+  x.tags.forEach(function(t){ var s=document.createElement('span'); s.style.cssText='display:inline-flex;padding:2px 8px;border-radius:6px;background:#fff;border:1px solid #e1e4e8;font-size:12px;line-height:16px;color:#55585f'; s.textContent=t; tg.appendChild(s); });
+  a.appendChild(tg); w.appendChild(q); w.appendChild(a); log.appendChild(w);
+ });
+ QA.forEach(function(x,i){ if(st.asked.indexOf(i)>=0) return; var b=document.createElement('button'); b.type='button'; b.textContent=x.q; b.style.cssText='min-height:40px;padding:8px 14px;border:1px solid #7f838b;border-radius:999px;background:#fff;color:#1c1e22;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer'; b.addEventListener('click',function(){ st.asked.push(i); render(); }); chips.appendChild(b); });
+ ifs('noMessages', st.asked.length===0); ifs('allAsked', st.asked.length===QA.length);
+}
+root.addEventListener('click', function(e){
+ var o = e.target.closest('[data-open]'); if (o){ st.open=true; st.step=0; render(); return; }
+ var g = e.target.closest('[data-go]'); if (g){ st.step=+g.dataset.go; render(); return; }
+ if (e.target.closest('#chat-reset')){ st.asked=[]; render(); }
+});
+render();
+
+/* ===== Inquiry ===== */
+var f=document.getElementById('inquiry-form'), em=document.getElementById('inq-email'), msg=document.getElementById('inq-msg'), nm=document.getElementById('inq-name');
+var eErr=document.getElementById('inq-email-err'), mErr=document.getElementById('inq-msg-err'), sErr=document.getElementById('inq-send-err');
+var fields=document.getElementById('inq-fields'), done=document.getElementById('inq-done'), btn=document.getElementById('inq-submit');
+function mark(el, bad, err){ el.setAttribute('aria-invalid', bad?'true':'false'); el.style.borderColor = bad?'#c62828':'#7f838b'; el.style.background = bad?'#fdeaea':'#ffffff'; err.hidden=!bad; }
+em.addEventListener('input',function(){ mark(em,false,eErr); }); msg.addEventListener('input',function(){ mark(msg,false,mErr); });
+function success(){ fields.style.display='none'; done.hidden=false; done.style.display='flex'; document.getElementById('inq-done-text').textContent='We’ll reply to '+em.value.trim()+'.'; }
+f.addEventListener('submit', function(e){
+ e.preventDefault(); sErr.hidden=true;
+ var okE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()), okM=msg.value.trim().length>0;
+ mark(em,!okE,eErr); mark(msg,!okM,mErr); if(!okE||!okM) return;
+ var data={name:nm.value.trim(), email:em.value.trim(), message:msg.value.trim()};
+ if (INQUIRY_ENDPOINT){
+  btn.disabled=true; btn.textContent='Sending…';
+  fetch(INQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+   .then(function(r){ if(!r.ok) throw new Error(r.status); success(); })
+   .catch(function(){ sErr.hidden=false; })
+   .finally(function(){ btn.disabled=false; btn.textContent='Send inquiry'; });
+ } else if (CONTACT_EMAIL){
+  window.location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Inquiry from '+(data.name||data.email))+'&body='+encodeURIComponent(data.message+'\n\n'+data.name+'\n'+data.email);
+  success();
+ } else { sErr.textContent='This form is not connected yet.'; sErr.hidden=false; }
+});
+document.getElementById('inq-again').addEventListener('click',function(){ f.reset(); done.hidden=true; done.style.display=''; fields.style.display='flex'; });
+})();
+</script>
+</body>
+</html>
